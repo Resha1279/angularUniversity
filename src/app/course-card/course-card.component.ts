@@ -28,4 +28,10 @@ export class CourseCardComponent implements OnInit {
     this.courseSelected.emit(this.course);
   }
 
+  cardClasses(){
+    if(this.course.category === 'BEGINNER'){
+      return 'beginner'
+    }
+  }
+
 }

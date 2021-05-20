@@ -48,11 +48,11 @@ course-card.is-last {
 }
 
 course-card.is-even {
-  background: lightgray;
+  background: rgb(193, 255, 221);
 }
 
 course-card.is-odd {
-  background: lightcyan;
+  background: rgb(255, 200, 200);
 }
 
 .course-category {

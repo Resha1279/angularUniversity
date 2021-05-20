@@ -4,12 +4,57 @@
 
 </div>
 
+<div class="demo pipes">
+
+  <!-- date -->
+  <div>Start Date: {{startDate | date}}</div>
+  <div>Start Date: {{startDate | date:'mm/dd/yy'}}</div>
+  <div>Start Date: {{startDate | date:'mm/dd/yyyy'}}</div>
+
+  <!-- only uppercase M works for Jan why?? -->
+  <div>Start Date: {{startDate | date:'MMM/dd/yyyy'}}</div>
+  <div>Start Date: {{startDate | date:'MMM dd yyyy'}}</div>
+
+  <!-- strings -->
+  <div>{{title | uppercase}}</div>
+  <div>{{title | lowercase}}</div>
+  <div>{{title | titlecase}}</div>
+
+  <!-- price -->
+  <div>{{price | number}}</div>
+  <div>{{price | percent}}</div>
+
+  <!-- 3 is num of digits before decimal. 3 is min num of digits after decimal. 5 is max -->
+  <div>{{price | number:'3.3-5'}}</div>
+  <div>{{price | currency}}</div>
+  <div>{{price | currency:'EUR'}}</div>
+  <!-- doesnt show NPR (-_-) -->
+  <div>{{price | currency:'INR'}}</div>
+  <div>{{price | number}}</div>
+
+
+  <!-- array -->
+  <!-- slice -->
+  <!-- index 0 and 1 are included for 0:2. 2 is not included -->
+  <course-card *ngFor="let c of courses | slice:0:2" [course]="c"></course-card>
+
+  <!-- json -->
+  <!-- gives json of array. useful inbdebugging -->
+  {{course | json}}
+
+  <!-- key value pipe -->
+  <!-- dammi dammi -->
+  <div *ngFor="let pair of course | keyvalue">{{pair.key + ': ' + pair.value}}</div>
+
+</div>
+
 
 <div class="courses">
 
 
 
-  <course-card *ngFor="let c of courses; index as i;" (courseSelected)="onCourseSelected($event)" [cardIndex]="i + 1"
-    [course]="c"></course-card>
+  <course-card *ngFor="let c of courses; index as i;first as isFirst; last as isLast; even as isEven;odd as isOdd"
+    [cardIndex]="i + 1" [course]="c" [class.is-even]="isEven" [class.is-odd]="isOdd"
+    (courseSelected)="onCourseSelected($event)"></course-card>
 
 </div>
